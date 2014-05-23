@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+  <string id="32003">Custom URL</string>
+  <string id="32004">URL subdirectory</string>
+
+  <string id="32005">Archive tar files (for quicker re-installs)</string>
+  <string id="32006">Archive directory</string>
+
+  <string id="32007">Run in background</string>
+  <string id="32008">Verify files</string>
+  <string id="32009">Backup</string>
+  <string id="32010">Never</string>
+  <string id="32011">Prompt every time</string>
+  <string id="32012">Always</string>
+
+  <string id="32020">Notifications</string>
+  <string id="32021">Enable reboot confirmation</string>
+  <string id="32022">Enable new build notifications</string>
+  <string id="32023">Check only on boot</string>
+  <string id="32024">Prompt to show build list</string>
+  <string id="32025">When not playing video</string>
+  <string id="32026">Advanced</string>
+  <string id="32027">Override installed build type</string>
+  <string id="32028">Build type to install</string>
+  <string id="32029">Disable overclocking during update</string>
+  <string id="32030">Also update extlinux</string>
+  <string id="32031">Set timeout</string>
+  <string id="32032">Timeout (seconds)</string>
+  <string id="32033">Debug</string>
+</strings>
