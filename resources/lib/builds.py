@@ -222,12 +222,20 @@ class OfficialReleaseLinkExtractor(ReleaseLinkExtractor):
     BASE_URL = "http://releases.openelec.tv"
 
 
+class WetekPlayReleaseLinkExtractor(ReleaseLinkExtractor):
+    BUILD_RE = "OpenELEC-Amlogic.WeTek.Play.arm-([\d\.]+)\.tar"
+
+
 class DualAudioReleaseLinkExtractor(ReleaseLinkExtractor):
     BUILD_RE = ".*OpenELEC-{arch}.DA-([\d\.]+)\.tar(|\.bz2)"
 
 
 class MilhouseBuildLinkExtractor(BuildLinkExtractor):
     BUILD_RE = ".*OpenELEC.*-{arch}-[a-zA-Z]+-(\d+)-(?:r|%23)(\d+[a-z]*)-g[0-9a-z]+\.tar(|\.bz2)"
+
+
+class WetekPlayBuildLinkExtractor(BuildLinkExtractor):
+    BUILD_RE = "OpenELEC-Amlogic.WeTek.Play.arm-devel-(\d+)-r\d+[a-z]*-g([0-9a-z]+)\.tar"
 
 
 class BuildInfoExtractor(BaseExtractor):
@@ -314,6 +322,15 @@ def sources(arch):
                                                         info_extractor=MilhouseBuildInfoExtractor)
         sources_dict["Chris Swan RPi Builds"] = BuildsURL("http://resources.pichimney.com/OpenELEC/dev_builds",
                                                           info_extractor=CommitInfoExtractor)
+
+    if arch in ("WeTek_Play.arm", "Amlogic.arm"):
+        WETEK_URL = "http://update.wetekos.com:8080/download/OpenELEC"
+        sources_dict["WeTek Play Builds"] = BuildsURL(WETEK_URL,
+                                                      extractor=WetekPlayBuildLinkExtractor,
+                                                      subdir="devel")
+        sources_dict["WeTek Play Releases"] = BuildsURL(WETEK_URL,
+                                                        extractor=WetekPlayReleaseLinkExtractor,
+                                                        subdir="microSD")
 
     sources_dict["Official Releases"] = BuildsURL("http://openelec.mirrors.uk2.net",
                                                   extractor=OfficialReleaseLinkExtractor)
