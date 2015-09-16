@@ -16,10 +16,12 @@ class Progress(xbmcgui.DialogProgress):
             line1 = " "
         if line2 is None:
             line2 = " "
+        self.line1 = line1
+        self.line2 = line2
         super(Progress, self).create(heading, line1, line2)
 
     def update(self, percent, message=None):
-        super(Progress, self).update(percent, line3=message)
+        super(Progress, self).update(percent, self.line1, self.line2, message)
 
 
 class ProgressBG(xbmcgui.DialogProgressBG):
