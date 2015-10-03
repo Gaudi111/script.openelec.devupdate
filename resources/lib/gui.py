@@ -51,6 +51,15 @@ class HistoryDialog(BaseInfoDialog):
             self.getControl(1).setText("Install history not available")
 
 
+class ContextMenuDialog(xbmcgui.WindowXMLDialog):
+    def __new__(cls, *args):
+        return super(ContextMenuDialog, cls).__new__(
+            cls, "script-devupdate-contextmenu.xml", addon.src_path)
+
+    def __init__(self):
+        pass
+
+
 class BuildSelectDialog(xbmcgui.WindowXMLDialog):
     LABEL_ID = 100
     BUILD_LIST_ID = 20
@@ -196,6 +205,10 @@ class BuildSelectDialog(xbmcgui.WindowXMLDialog):
                         if details:
                             dialog = InfoDialog(build, details)
                             dialog.doModal()
+
+        elif action_id == xbmcgui.ACTION_CONTEXT_MENU:
+            dialog = ContextMenuDialog()
+            dialog.doModal()
 
         elif action_id in (xbmcgui.ACTION_PREVIOUS_MENU, xbmcgui.ACTION_NAV_BACK):
             self.close()
